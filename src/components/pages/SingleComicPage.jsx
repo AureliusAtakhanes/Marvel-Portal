@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-import MarvelService from '../../services/MarvelService';
+import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
 import AppBanner from "../appBanner/AppBanner";
 import './SingleComic.scss'
@@ -9,7 +9,7 @@ import './SingleComic.scss'
 const SingleComicPage = () => {
     const { comicId } = useParams();
     const [comic, setComic] = useState(null);
-    const { loading, getComic, } = new MarvelService();
+    const { loading, getComic } = useMarvelService();
 
     useEffect(() => {
         updateComic()

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import MarvelService from '../../services/MarvelService';
+import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
 
 import './comicsList.scss';
@@ -10,10 +10,10 @@ const ComicsList = () => {
 
     const [comicsList, setComicsList] = useState([]);
     const [newItemLoading, setnewItemLoading] = useState(false);
-    const [offset, setOffset] = useState(0);
+    const [offset, setOffset] = useState(85);
     const [comicsEnded, setComicsEnded] = useState(false);
 
-    const { loading, getAllComics } = new MarvelService();
+    const { loading, getAllComics } = useMarvelService();
 
     useEffect(() => {
         onRequest(offset, true);
